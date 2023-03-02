@@ -2,9 +2,9 @@ const expres = require('express');
 var app = expres();
 
 //db start
-const data = require('./database/db');
-
+const db = require('./database/db');
 //db end
+
 
 app.set('view engine','ejs');
 app.use(expres.static('public'));
@@ -14,8 +14,7 @@ app.use(expres.static('public'));
 
 app.get('/',(req,res)=>{
    res.render('index');
-   data.db;
-})
+});
 
 
 

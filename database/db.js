@@ -1,10 +1,10 @@
-const database = require('sequelize');
-const db = new database('nodejs-eticaret','root','celil123',{host:'localhost',dialect:'mysql'});
-try{
-db.authenticate();
-console.log("bağlantı başarılı");
-}
-catch(error){
-    console.log("bağlantı başarısız");
-}
-module.exports = db;
+const database = require('mysql2');
+
+database.createConnection({
+    host:'localhost',
+    user:'root',
+    password:'celil123',
+    database:'nodejs-eticaret'
+}).then(res=>{
+    console.log("bağlantı başarılı");
+});

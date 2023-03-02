@@ -8,3 +8,5 @@ database.createConnection({
 }).then(res=>{
     console.log("bağlantı başarılı");
 });
+
+module.exports = db;

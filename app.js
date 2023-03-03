@@ -5,6 +5,9 @@ var app = expres();
 const db = require('./database/db');
 //db end
 
+// product start
+const prop = require('./controller/product');
+// product end
 
 app.set('view engine','ejs');
 app.use(expres.static('public'));
@@ -13,7 +16,11 @@ app.use(expres.static('public'));
 
 
 app.get('/',(req,res)=>{
-   res.render('index');
+    prop.getAll().then((result) => {
+        res.render('index',{model:result});
+    }).catch((err) => {
+       console.log(err); 
+    });
 });
 
 

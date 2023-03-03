@@ -17,7 +17,7 @@ app.use(expres.static('public'));
 
 app.get('/',(req,res)=>{
     prop.getAll().then((result) => {
-        res.render('index',{model:result});
+        res.render('index',{model:result[0]});
     }).catch((err) => {
        console.log(err); 
     });

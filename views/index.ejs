@@ -40,27 +40,26 @@
     <!-- navbar - End -->
 
 
-    <div class="container  d-flex justify-content-center align-content-center w-100  mt-5">
+    <div class="container container-fluid d-flex justify-content-center mt-5">
         <div class="row">
-           
-            <%   model.forEach(m => { %>
-                    
-                    <div class="col-sm-12 col-md-6 col-xl-4">
-                    <div class="card" style="width: 18rem;">
+            <% model.forEach(m => { %>
+                <div class="col-sm-12 col-md-6 col-xl-3">
+                    <div class="card  mt-2">
                         <img src="/image/iphone13.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title"><%= m.name%></h5>
-                          <p class="card-text"><%= m.description%></p>
-                          <div class="card-footer">
-                            <div class="card-text"><%= m.price%></div>
-                          </div>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title"><%= m.name%></h5>
+                        <p class="card-text"><%= m.description%></p>
+                        <div class="card-footer">
+                            <div class="card-text"><%= m.price%> <i class="fa-solid fa-turkish-lira-sign"></i></div>
                         </div>
-                      </div>
-                </div>
-
-
-                    <%  } ); %>
+                      
+                        <a href="/details/<%= m.Id %>" class="btn btn-primary mt-3">Go Details</a>
+                        </div>
+                    </div>
+                </div>       
+            <% }); %>     
+         
+            
                 
            
         </div>

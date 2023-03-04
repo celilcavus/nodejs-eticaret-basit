@@ -50,7 +50,7 @@ app.post('/product-add',(req,res)=>{
         products.categoryId
         ).then((result) => {
        if(result){
-            const mesaj  = "işlem başarılı";
+           
             res.redirect('/product-add');
        }
        
@@ -58,6 +58,16 @@ app.post('/product-add',(req,res)=>{
         console.log(err);
     });
 });
+
+app.get('/product-delete/:id',(req,res)=>{
+    Product.delete(req.params.id).then((result) => {
+        if(result){
+            res.redirect('/product-add');
+        }
+    }).catch((err) => {
+        console.log(err);
+    });
+})
 //Product - end
 
 

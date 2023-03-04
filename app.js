@@ -41,15 +41,19 @@ app.post('/product-add',(req,res)=>{
         name:req.body.name,
         price:req.body.price,
         description:req.body.description,
-        category:req.body.category,
+        categoryId:req.body.categoryId,
     };
     Product.Insert(
         products.name,
         products.price,
         products.description,
-        products.category
+        products.categoryId
         ).then((result) => {
-       res.redirect('./product/product-add');
+       if(result){
+            const mesaj  = "işlem başarılı";
+            res.redirect('/product-add');
+       }
+       
     }).catch((err) => {
         console.log(err);
     });

@@ -29,6 +29,7 @@ app.get('/admin',(req,res)=>{
 //admin panel - end
 
 //Product - start
+//#region ===================== PRODUCT AND PRODUC DETAILS
 app.get('/product-add',(req,res)=>{
     Product.getAll().then((result) => {
         res.render('./product/product-add',{model:result[0]});
@@ -133,7 +134,6 @@ app.post('/product-addDetails',(req,res)=>{
     });
 });
 
-
 app.get('/product-viewDetails/:id',(req,res)=>{
     productionDetails.getView(req.params.id).then((result) => {
         res.render('./product/product-viewDetails',{model:result[0]});
@@ -141,18 +141,20 @@ app.get('/product-viewDetails/:id',(req,res)=>{
         console.log(err);
     });
 })
-
+//#endregion
 //Product - end
 
 
+//#region  ===================== CATEGORY =====================
+
+
+
+//#endregion
 
 
 
 
-
-
-
-
+//index(home)
 app.get('/',(req,res)=>{
     prop.getAll().then((result) => {
         res.render('index',{model:result[0]});

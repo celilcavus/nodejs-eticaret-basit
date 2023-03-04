@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // product start
 const prop = require('./controller/product');
-const productionDetails = require('./controller/product-details');
+const productionDetails = require('./controller/productDetails');
 const Product = require('./controller/product');
 // product end
 
@@ -36,6 +36,7 @@ app.get('/product-add',(req,res)=>{
         console.log(err);
     });
 });
+
 app.post('/product-add',(req,res)=>{
     const products = {
         name:req.body.name,
@@ -85,7 +86,6 @@ app.post('/product-update',(req,res)=>{
         description:req.body.description,
         categoryId:req.body.categoryId,
     };
-   
     Product.Update(
         products.name,
         products.price,
@@ -100,7 +100,38 @@ app.post('/product-update',(req,res)=>{
     }).catch((err) => {
         console.log(err);
     });
+});
+
+
+app.get('/product-addDetails/:id',(req,res)=>{
+    productionDetails.getById(req.params.id).then((result) => {
+        res.render('./product/product-addDetails',{model:req.params.id});
+    }).catch((err) => {
+        console.log(err);
+    });
+   
 })
+app.post('/product-addDetails',(req,res)=>{
+    const prodcutDetails = {
+        productId :req.body.productId,
+        productionCountry:req.body.productionCountry,
+        productionDate:req.body.productionDate,
+        longDescription:req.body.longDescription
+    }
+    productionDetails.Insert(
+        prodcutDetails.productId,
+        prodcutDetails.productionCountry,
+        prodcutDetails.productionDate,
+        prodcutDetails.longDescription)
+        .then((result) => {
+        if (result) {
+            res.redirect('/product-add');
+        }
+    }).catch((err) => {
+        console.log(err);
+    });
+})
+
 //Product - end
 
 

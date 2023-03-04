@@ -110,7 +110,8 @@ app.get('/product-addDetails/:id',(req,res)=>{
         console.log(err);
     });
    
-})
+});
+
 app.post('/product-addDetails',(req,res)=>{
     const prodcutDetails = {
         productId :req.body.productId,
@@ -127,6 +128,15 @@ app.post('/product-addDetails',(req,res)=>{
         if (result) {
             res.redirect('/product-add');
         }
+    }).catch((err) => {
+        console.log(err);
+    });
+});
+
+
+app.get('/product-viewDetails/:id',(req,res)=>{
+    productionDetails.getView(req.params.id).then((result) => {
+        res.render('./product/product-viewDetails',{model:result[0]});
     }).catch((err) => {
         console.log(err);
     });

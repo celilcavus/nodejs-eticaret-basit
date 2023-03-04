@@ -68,6 +68,39 @@ app.get('/product-delete/:id',(req,res)=>{
         console.log(err);
     });
 })
+
+app.get('/product-update/:id',(req,res)=>{
+    Product.getById(req.params.id).then((result) => {
+        res.render('./product/product-update',{model:result[0]});
+    }).catch((err) => {
+        console.log(err);
+    });
+})
+
+app.post('/product-update',(req,res)=>{
+    const products = {
+        Id:req.body.Id,
+        name:req.body.name,
+        price:req.body.price,
+        description:req.body.description,
+        categoryId:req.body.categoryId,
+    };
+   
+    Product.Update(
+        products.name,
+        products.price,
+        products.description,
+        products.categoryId,
+        products.Id
+    ).then((result) => {
+        if (result) {
+            res.redirect('/product-add');
+        }
+       
+    }).catch((err) => {
+        console.log(err);
+    });
+})
 //Product - end
 
 

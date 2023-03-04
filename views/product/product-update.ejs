@@ -12,22 +12,25 @@
 </head>
 <body>
     <div class="container">
+            <% model.forEach(model => { %>
+                <form action="/product-update" method="post">
+                    <input type="hidden" name="Id" value="<%= model.Id %>">
 
-       <form action="/product-update" method="post">
-            <label for="" class="mt-5">Name</label>
-            <input type="text" name="name"  class="form-control">
-            <br>
-            <label for="">Price</label>
-            <input type="text" name="price"  class="form-control">
-            <br>
-            <label for="">Description</label>
-            <input type="text" name="description"  class="form-control">
-            <br>
-            <label for="">Categpry</label>
-            <input type="text" name="categoryId" class="form-control">
-            <br>
-            <button type="submit" class="btn btn-primary text-light">Güncelle !</button>
-       </form>
+                    <label for="" class="mt-5">Name</label>
+                    <input type="text" name="name" value="<%= model.name %>" class="form-control">
+                    <br>
+                    <label for="">Price</label>
+                    <input type="text" name="price" value="<%= model.price %>" class="form-control">
+                    <br>
+                    <label for="">Description</label>
+                    <input type="text" name="description" value="<%= model.description %>" class="form-control">
+                    <br>
+                    <label for="">Categpry</label>
+                    <input type="text" name="categoryId" value="<%= model.categoryId %>" class="form-control">
+                    <br>
+                    <button type="submit" class="btn btn-primary text-light">Güncelle !</button>
+            </form>
+            <% }); %>
     </div>
 
     

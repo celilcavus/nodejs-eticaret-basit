@@ -3,7 +3,7 @@ const database = require('mysql2');
 let connect = database.createConnection({
     host:'localhost',
     user:'root',
-    password:'celil123',
-    database:'nodejs-eticaret'
+    password:'', // mysql db password
+    database:'' // mysql db name
 });
 module.exports = connect.promise();
